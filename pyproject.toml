@@ -1,0 +1,19 @@
+[project]
+name = "s2devil"
+version = "0.1.0"
+description = "Multi-agent LLM tournament inspired by The Devil's Plan"
+requires-python = ">=3.12"
+dependencies = ["pydantic>=2.7", "litellm>=1.70", "fastapi>=0.110", "uvicorn>=0.29", "python-dotenv>=1.0"]
+
+[project.optional-dependencies]
+dev = ["pytest>=8", "httpx>=0.27"]
+
+[tool.setuptools]
+packages = ["engine", "games", "agents", "viewer"]
+
+[tool.setuptools.package-data]
+viewer = ["static/*"]
+
+[tool.pytest.ini_options]
+pythonpath = ["."]
+testpaths = ["tests"]

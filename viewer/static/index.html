@@ -1,0 +1,71 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Tournament Viewer</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="topbar">
+    <h1>Tournament Viewer</h1>
+    <label class="field">Run
+      <select id="run-select" aria-label="Run"></select>
+    </label>
+    <span id="live-badge" class="badge live" hidden>LIVE</span>
+    <button id="btn-stop" class="stop-btn" type="button" hidden>■ Stop run</button>
+    <label class="field">View as
+      <select id="view-select" aria-label="View as"></select>
+    </label>
+    <label class="check"><input type="checkbox" id="show-hidden" checked> Hidden info</label>
+    <label class="check"><input type="checkbox" id="show-system"> System events</label>
+    <button id="theme-toggle" class="icon-btn" type="button" aria-label="Toggle theme">◐</button>
+  </header>
+
+  <section class="controls" aria-label="Playback">
+    <div class="status" id="status">No run loaded</div>
+    <div class="scrubber">
+      <button type="button" id="btn-start" class="icon-btn" aria-label="Go to start">⏮</button>
+      <button type="button" id="btn-back" class="icon-btn" aria-label="Previous event">◀</button>
+      <button type="button" id="btn-play" class="icon-btn play" aria-label="Play">▶</button>
+      <button type="button" id="btn-fwd" class="icon-btn" aria-label="Next event">▶︎|</button>
+      <button type="button" id="btn-end" class="icon-btn" aria-label="Go to end">⏭</button>
+      <input type="range" id="slider" min="0" max="0" value="0" aria-label="Event position">
+      <span id="position" class="position">0 / 0</span>
+      <label class="field compact">Speed
+        <select id="speed" aria-label="Playback speed">
+          <option value="2">2/s</option>
+          <option value="5" selected>5/s</option>
+          <option value="15">15/s</option>
+          <option value="50">50/s</option>
+        </select>
+      </label>
+      <label class="check"><input type="checkbox" id="follow" checked> Follow live</label>
+    </div>
+  </section>
+
+  <main class="layout">
+    <aside class="panel" aria-label="Players">
+      <h2>Players</h2>
+      <div id="players"></div>
+      <h2>Contacts</h2>
+      <p class="hint">Lines: private messages (thicker = more). Arrows: Pieces given.</p>
+      <div id="graph" class="graph"></div>
+    </aside>
+
+    <section class="panel timeline-panel" aria-label="Timeline">
+      <h2>Timeline</h2>
+      <div id="timeline" class="timeline"></div>
+    </section>
+
+    <aside class="panel" aria-label="Pieces and private messages">
+      <h2>Pieces over time</h2>
+      <div id="chart" class="chart"></div>
+      <h2>Private messages</h2>
+      <div id="threads"></div>
+    </aside>
+  </main>
+
+  <script src="app.js"></script>
+</body>
+</html>
